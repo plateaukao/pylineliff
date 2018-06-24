@@ -2,22 +2,7 @@
 import requests
 from os.path import join, dirname
 import dotenv
-import logging
 import json
-
-try:
-    import http.client as http_client
-except ImportError:
-    # Python 2
-    import httplib as http_client
-http_client.HTTPConnection.debuglevel = 1
-
-# You must initialize logging, otherwise you'll not see debug output.
-logging.basicConfig()
-logging.getLogger().setLevel(logging.DEBUG)
-requests_log = logging.getLogger("requests.packages.urllib3")
-requests_log.setLevel(logging.DEBUG)
-requests_log.propagate = True
 
 dotenv_path = join(dirname(__file__), '.env')
 dotenv.load_dotenv(dotenv_path)
@@ -44,19 +29,16 @@ def liff_add(url, size_type):
 
 
 def liff_delete(liff_id):
-    response = requests.delete(LIFF_BASE_URL + "/" + liff_id, headers=default_headers())
-    return response
+    return requests.delete(LIFF_BASE_URL + "/" + liff_id, headers=default_headers())
 
 
 def liff_update(liff_id, view):
-    response = requests.put(LIFF_BASE_URL + "/" + liff_id + "/view", headers=default_headers(), json=view)
-    return response
+    return requests.put(LIFF_BASE_URL + "/" + liff_id + "/view", headers=default_headers(), json=view)
 
 
 def liff_list():
     response = requests.get(LIFF_BASE_URL, headers=default_headers())
     response_json_dic = json.loads(response.text)
-    print response_json_dic
     return response_json_dic
 
 
