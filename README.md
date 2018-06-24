@@ -8,13 +8,13 @@ https://developers.line.me/en/docs/liff/overview/
 #### init ####
 to save access token locally for later use
 ```
-$ pylineliff init {LINE_LIFF_ACCESS_TOKEN}
+$ liff.py init {LINE_LIFF_ACCESS_TOKEN}
 ```
 
 #### list ####
 list all registered LINE LIFF apps
 ```
-$ pytlineliff list
+$ liff.py list
 ```
 
 
@@ -23,18 +23,18 @@ register a new LINE LIFF app
 
 (type can be: full, tall, compact)
 ```
-$ pytlineliff add <url> <type>
+$ liff.py  add <url> <type>
 ```
 
 #### delete ####
 delete an existing LINE LIFF app
 ```
-$ pylineliff delete <liff-id>
+$ liff.py delete <liff-id>
 ```
 
 #### update ####
 ```
-$ pylineliff update <liff-id> <json_string>
+$ liff.py update <liff-id> <json_string>
 ```
 
 

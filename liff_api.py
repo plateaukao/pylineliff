@@ -3,8 +3,10 @@ import requests
 from os.path import join, dirname
 import dotenv
 import json
+from sys import exit
 
 dotenv_path = join(dirname(__file__), '.env')
+file = open(dotenv_path, 'w+')
 dotenv.load_dotenv(dotenv_path)
 
 LIFF_BASE_URL = "https://api.line.me/liff/v1/apps"
@@ -12,7 +14,11 @@ LIFF_ACCESS_TOKEN_KEY = "LIFF_ACCESS_TOKEN"
 
 
 def default_headers():
-    headers = {"Authorization": "Bearer " + dotenv.get_key(dotenv_path, LIFF_ACCESS_TOKEN_KEY),
+    access_token = dotenv.get_key(dotenv_path, LIFF_ACCESS_TOKEN_KEY)
+    if access_token == None:
+        print "please call liff.py init first <accessToken>"
+        exit()
+    headers = {"Authorization": "Bearer " + access_token,
                "Content-Type": "application/json"}
     return headers
 
