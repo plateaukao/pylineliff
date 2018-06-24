@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from apiRequest import *
+from liff_api import *
 import sys
 import pprint
 
