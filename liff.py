@@ -8,13 +8,13 @@ pp = pprint.PrettyPrinter(indent=4)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print """
+        print("""
 ***** usage *****
   pylineliff init access_token
   pylineliff add url type(small, tall, full)
   pylineliff list
   pylineliff delete liff_id
-  pylineliff update liff_id json_of_items_to_change"""
+  pylineliff update liff_id json_of_items_to_change""")
 
     elif sys.argv[1] == 'init' and len(sys.argv) == 3:
         liff_init(sys.argv[2])
