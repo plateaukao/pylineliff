@@ -6,6 +6,8 @@ import json
 import sys
 
 dotenv_path = join(dirname(__file__), '.env')
+# The open behavior is a little different in py2 and py3
+# Using 'w+' always truncate the file to 0 length in py3 
 if sys.version_info[0] == 2:
     file = open(dotenv_path, 'w+')
 else:
